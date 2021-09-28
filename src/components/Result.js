@@ -1,6 +1,6 @@
 import React from 'react';
-import ActorGrid from './ActorGrid';
-import ShowGrid from './ShowGrid';
+import ActorGrid from './actor/ActorGrid';
+import ShowGrid from './show/ShowGrid';
 
 const Result = ({ result }) => {
   const resultDisplay = () => {
