@@ -25,7 +25,6 @@ const Home = () => {
   const handleRadio = ev => {
     setSearchOption(ev.target.value);
   };
-  console.log(searchOption);
 
   return (
     <MainPageLayout>

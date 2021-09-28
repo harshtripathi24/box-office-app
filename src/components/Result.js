@@ -1,4 +1,6 @@
 import React from 'react';
+import ActorGrid from './ActorGrid';
+import ShowGrid from './ShowGrid';
 
 const Result = ({ result }) => {
   const resultDisplay = () => {
@@ -7,30 +9,10 @@ const Result = ({ result }) => {
     }
     if (result && result.length > 0) {
       if (result[0].show) {
-        return (
-          <div>
-            {result.map(item => {
-              return (
-                <div key={item.show.id}>
-                  <p>{item.show.name}</p>
-                </div>
-              );
-            })}
-          </div>
-        );
+        return <ShowGrid result={result} />;
       }
       if (result[0].person) {
-        return (
-          <div>
-            {result.map(item => {
-              return (
-                <div key={item.person.id}>
-                  <p>{item.person.name}</p>
-                </div>
-              );
-            })}
-          </div>
-        );
+        return <ActorGrid result={result} />;
       }
     }
 
