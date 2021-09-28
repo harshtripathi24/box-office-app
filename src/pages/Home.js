@@ -4,8 +4,10 @@ import Result from '../components/Result';
 
 const Home = () => {
   const [input, setInput] = useState('');
-  const url = `https://api.tvmaze.com/search/shows?q=${input}`;
   const [result, setResult] = useState(null);
+  const [searchOption, setSearchOption] = useState('shows');
+  const isSearchShows = searchOption === 'shows';
+  const url = `https://api.tvmaze.com/search/${searchOption}?q=${input}`;
 
   const onInputChange = ev => {
     setInput(ev.target.value);
@@ -20,16 +22,45 @@ const Home = () => {
       onSearch();
     }
   };
+  const handleRadio = ev => {
+    setSearchOption(ev.target.value);
+  };
+  console.log(searchOption);
 
   return (
     <MainPageLayout>
       <input
         type="text"
         name="searcBox"
+        placeholder="Search for something"
         onChange={onInputChange}
         onKeyDown={onPressEnter}
         value={input}
       />
+      <div>
+        <label htmlFor="search-shows">
+          Search Show
+          <input
+            type="radio"
+            name="sarch-show"
+            id="search-show"
+            value="shows"
+            onChange={handleRadio}
+            checked={isSearchShows}
+          />
+        </label>
+        <label htmlFor="search-actors">
+          Search Actors
+          <input
+            type="radio"
+            name="sarch-actors"
+            id="search-actors"
+            value="people"
+            onChange={handleRadio}
+            checked={!isSearchShows}
+          />
+        </label>
+      </div>
       <button type="button" onClick={onSearch}>
         Search
       </button>
