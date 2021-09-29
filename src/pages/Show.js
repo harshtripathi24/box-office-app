@@ -4,15 +4,34 @@ import { useParams } from 'react-router';
 const Show = () => {
   const { id } = useParams();
   const [show, setShow] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
+    setIsLoading(true);
     const fetchData = async () => {
-      const res = await fetch(
-        `https://api.tvmaze.com/shows/${id}?embed[]=seasons&embed[]=cast`
-      );
-      const data = await res.json();
+      try {
+        const res = await fetch(
+          `https://api.tvmaze.com/shows/${id}?embed[]=seasons&embed[]=cast`
+        );
+        const data = await res.json();
+        setTimeout(() => {
+          if (isMounted) {
+            setShow(data);
+            setIsLoading(false);
+          }
+        }, 2000);
+      } catch (error) {
+        if (isMounted) {
+          setIsError(error);
+          setIsLoading(false);
+        }
+      }
 
-      setShow(data);
+      return () => {
+        isMounted = false;
+      };
     };
 
     fetchData();
@@ -20,7 +39,13 @@ const Show = () => {
 
   console.log(show);
 
-  return <div>fdsf</div>;
+  if (isLoading) {
+    return <div>Is Loading</div>;
+  }
+  if (isError) {
+    return <div>fdsf</div>;
+  }
+  return <div>Error occured {isError}</div>;
 };
 
 export default Show;
