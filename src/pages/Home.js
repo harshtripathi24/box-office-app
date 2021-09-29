@@ -13,8 +13,9 @@ const Home = () => {
     setInput(ev.target.value);
   };
   const onSearch = async () => {
-    const resp = await fetch(url);
-    const data = await resp.json();
+    const res = await fetch(url);
+    const data = await res.json();
+
     setResult(data);
   };
   const onPressEnter = ev => {
