@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
+import CustomRadio from '../components/CustomRadio';
 import MainPageLayout from '../components/MainPageLayout';
 import Result from '../components/Result';
+import {
+  SearchInput,
+  RadioInputsWrapper,
+  SearchButtonWrapper,
+} from './Home.style';
 
 const Home = () => {
   const [input, setInput] = useState('');
@@ -29,7 +35,7 @@ const Home = () => {
 
   return (
     <MainPageLayout>
-      <input
+      <SearchInput
         type="text"
         name="searcBox"
         placeholder="Search for something"
@@ -37,33 +43,32 @@ const Home = () => {
         onKeyDown={onPressEnter}
         value={input}
       />
-      <div>
-        <label htmlFor="search-shows">
-          Search Show
-          <input
-            type="radio"
-            name="sarch-show"
-            id="search-show"
+      <RadioInputsWrapper>
+        <div>
+          <CustomRadio
+            label="Shows"
+            id="shows-search"
             value="shows"
-            onChange={handleRadio}
             checked={isSearchShows}
-          />
-        </label>
-        <label htmlFor="search-actors">
-          Search Actors
-          <input
-            type="radio"
-            name="sarch-actors"
-            id="search-actors"
-            value="people"
             onChange={handleRadio}
-            checked={!isSearchShows}
           />
-        </label>
-      </div>
-      <button type="button" onClick={onSearch}>
-        Search
-      </button>
+        </div>
+
+        <div>
+          <CustomRadio
+            label="Actors"
+            id="actors-search"
+            value="people"
+            checked={!isSearchShows}
+            onChange={handleRadio}
+          />
+        </div>
+      </RadioInputsWrapper>
+      <SearchButtonWrapper>
+        <button type="button" onClick={onSearch}>
+          Search
+        </button>
+      </SearchButtonWrapper>
       <Result result={result} />
     </MainPageLayout>
   );
