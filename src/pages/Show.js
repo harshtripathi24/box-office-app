@@ -1,6 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useReducer } from 'react';
 import { useParams } from 'react-router';
+import Loading from '../components/Loading';
+import MainPageLayout from '../components/MainPageLayout';
 import ShowCasts from '../components/show/ShowCasts';
 import ShowDetails from '../components/show/ShowDetails';
 import ShowMainData from '../components/show/ShowMainData';
@@ -67,13 +69,14 @@ const Show = () => {
 
   console.log(show);
   if (isLoading) {
-    return <div>Is Loading</div>;
+    return <Loading />;
   }
   if (isError) {
     return <div>Error occured {isError}</div>;
   }
   return (
     <ShowPageWrapper>
+      <MainPageLayout />
       <ShowMainData
         image={show.image}
         name={show.name}

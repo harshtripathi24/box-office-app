@@ -19,6 +19,12 @@ export const ShowPageWrapper = styled.div`
 export const InfoBlock = styled.div`
   margin-bottom: 40px;
   h2 {
+    text-align: center;
+    background-color: blue;
+    color: white;
+    display: block;
+    padding: 0.3em;
+    border-radius: 25px;
     margin: 0;
     margin-bottom: 30px;
     font-size: 22px;

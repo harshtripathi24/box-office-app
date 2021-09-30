@@ -1,6 +1,7 @@
+import FadeIn from 'react-fade-in';
 import styled from 'styled-components';
 
-export const FlexGrid = styled.div`
+export const FlexGrid = styled(FadeIn)`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -9,7 +10,6 @@ export const FlexGrid = styled.div`
 export const SearchCard = styled.div`
   width: 300px;
   height: 100%;
-  margin: 0 15px 40px;
 
   .img-wrapper {
     width: 100%;
@@ -17,6 +17,7 @@ export const SearchCard = styled.div`
     height: 420px;
     overflow: hidden;
     border: 1px solid #ddd;
+    margin-top: 1em;
 
     img {
       object-fit: cover;

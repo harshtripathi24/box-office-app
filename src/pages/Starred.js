@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Loading from '../components/Loading';
 import MainPageLayout from '../components/MainPageLayout';
 import { apiGet } from '../components/misc/config';
 import { useShow } from '../components/misc/CustomHooks';
@@ -30,7 +31,7 @@ const Starred = () => {
   }, [starred]);
   return (
     <MainPageLayout>
-      {isLoading && <div>Shows are Loading......</div>}
+      {isLoading && <Loading />}
       {isError && <div>Error occured :{isError}</div>}
       {!isLoading && !shows && <div>No Shows Were Added</div>}
       {!isLoading && !isError && shows && <ShowGrid result={shows} />}
