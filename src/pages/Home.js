@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import CustomRadio from '../components/CustomRadio';
 import MainPageLayout from '../components/MainPageLayout';
 import Result from '../components/Result';
@@ -29,9 +29,9 @@ const Home = () => {
       onSearch();
     }
   };
-  const handleRadio = ev => {
+  const handleRadio = useCallback(ev => {
     setSearchOption(ev.target.value);
-  };
+  }, []);
 
   return (
     <MainPageLayout>
