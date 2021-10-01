@@ -3,6 +3,7 @@ import React, { useEffect, useReducer } from 'react';
 import { useParams } from 'react-router';
 import Loading from '../components/Loading';
 import MainPageLayout from '../components/MainPageLayout';
+import ScrollToTop from '../components/misc/ScrollToTop';
 import ShowCasts from '../components/show/ShowCasts';
 import ShowDetails from '../components/show/ShowDetails';
 import ShowMainData from '../components/show/ShowMainData';
@@ -101,6 +102,7 @@ const Show = () => {
         <h2>Casts</h2>
         <ShowCasts cast={show._embedded.cast} />
       </InfoBlock>
+      <ScrollToTop />
     </ShowPageWrapper>
   );
 };
